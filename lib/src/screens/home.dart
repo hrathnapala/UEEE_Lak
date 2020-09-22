@@ -45,100 +45,125 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          color: Colors.white,
-          height: MediaQuery.of(context).size.height * 0.08,
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                FlatButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.location_on),
-                    label: Text("Sri Lanka")),
-                VerticalDivider(
-                  color: Colors.black,
-                  thickness: 1,
-                  width: 1,
-                  indent: 20,
-                  endIndent: 20,
+    return Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 80,
+          title: Column(
+            children: [
+              Text(
+                "LAK.lk",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-                FlatButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.category),
-                    label: Text("Category")),
-                VerticalDivider(
-                  color: Colors.black,
-                  thickness: 1,
-                  width: 1,
-                  indent: 20,
-                  endIndent: 20,
+              ),
+              Text(
+                "22656 results",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
                 ),
-                FlatButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.equalizer),
-                    label: Text("")),
-              ]),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: CarouselSlider(
-            options: CarouselOptions(
-                height: MediaQuery.of(context).size.height * 0.25),
-            items: [
-              "assets/img/img1.jpg",
-              "assets/img/img2.jpg",
-              "assets/img/img3.jpg",
-              "assets/img/img4.jpg",
-              "assets/img/img5.jpg"
-            ].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Image.asset(
-                    i,
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    width: MediaQuery.of(context).size.width,
-                  );
-                },
-              );
-            }).toList(),
+              ),
+            ],
           ),
+          backgroundColor: Colors.blueAccent,
+          centerTitle: true,
         ),
-        SizedBox(
-          height: 10,
-        ),
-        SingleChildScrollView(
-          child: Container(
-            decoration: new BoxDecoration(
-              borderRadius: new BorderRadius.only(
-                  topLeft: const Radius.circular(30.0),
-                  topRight: const Radius.circular(30.0)),
+        body: Column(
+          children: [
+            Container(
               color: Colors.white,
+              height: MediaQuery.of(context).size.height * 0.08,
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FlatButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.location_on),
+                        label: Text("Sri Lanka")),
+                    VerticalDivider(
+                      color: Colors.black,
+                      thickness: 1,
+                      width: 1,
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                    FlatButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.category),
+                        label: Text("Category")),
+                    VerticalDivider(
+                      color: Colors.black,
+                      thickness: 1,
+                      width: 1,
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                    FlatButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.equalizer),
+                        label: Text("")),
+                  ]),
             ),
-            height: MediaQuery.of(context).size.height * 0.443,
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: new ListView.builder(
-                reverse: false,
-                itemBuilder: (_, int index) => EachList(
-                    this.Names[index],
-                    this.Location[index],
-                    this.Prices[index],
-                    this.Photos[index]),
-                itemCount: this.Names.length,
+            SizedBox(
+              height: 5,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height * 0.25),
+                items: [
+                  "assets/img/img1.jpg",
+                  "assets/img/img2.jpg",
+                  "assets/img/img3.jpg",
+                  "assets/img/img4.jpg",
+                  "assets/img/img5.jpg"
+                ].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Image.asset(
+                        i,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        width: MediaQuery.of(context).size.width,
+                      );
+                    },
+                  );
+                }).toList(),
               ),
             ),
-          ),
-        ),
-      ],
-    );
+            SizedBox(
+              height: 10,
+            ),
+            SingleChildScrollView(
+              child: Container(
+                decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.only(
+                      topLeft: const Radius.circular(30.0),
+                      topRight: const Radius.circular(30.0)),
+                  color: Colors.white,
+                ),
+                height: MediaQuery.of(context).size.height * 0.443,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: new ListView.builder(
+                    reverse: false,
+                    itemBuilder: (_, int index) => EachList(
+                        this.Names[index],
+                        this.Location[index],
+                        this.Prices[index],
+                        this.Photos[index]),
+                    itemCount: this.Names.length,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
 
