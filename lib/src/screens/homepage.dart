@@ -4,6 +4,7 @@ import 'package:lak_app/src/screens/home.dart';
 import 'package:lak_app/src/screens/location.dart';
 import 'package:lak_app/src/screens/profile.dart';
 import 'package:lak_app/src/screens/search.dart';
+import 'message-page/main-message-page.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -24,32 +25,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        title: Column(
-          children: [
-            Text(
-              "LAK.lk",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              "22656 results",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.blueAccent,
-        centerTitle: true,
-      ),
       body: currentScreen,
-     
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
@@ -138,7 +114,7 @@ class _HomepageState extends State<Homepage> {
                       onPressed: () {
                         setState(() {
                           currentScreen =
-                              Chat(); // if user taps on this dashboard tab will be active
+                              MainMessagePage(); // if user taps on this dashboard tab will be active
                           currentTab = 2;
                         });
                       },
@@ -201,5 +177,5 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
-Widget currentScreen = Home();
 
+Widget currentScreen = Home();
