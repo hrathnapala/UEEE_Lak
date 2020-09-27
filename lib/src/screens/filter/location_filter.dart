@@ -174,6 +174,7 @@ class _LocationFilterState extends State<LocationFilter> {
                                 .pop("${filteredlocation[index]}");
                           },
                         ),
+                        Divider()
                       ],
                     ),
                   );
