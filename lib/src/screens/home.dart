@@ -94,7 +94,9 @@ class _HomeState extends State<Home> {
                                 MaterialPageRoute(
                                     builder: (context) => LocationFilter()));
                             setState(() {
-                              location = result;
+                              if (result != null) {
+                                location = result;
+                              }
                             });
                           },
                           icon: Icon(Icons.location_on),

@@ -72,7 +72,7 @@ class _LocationFilterState extends State<LocationFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop("Location");
+            Navigator.of(context).pop(null);
           },
         ),
       ),
