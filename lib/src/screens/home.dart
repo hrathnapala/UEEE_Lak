@@ -70,87 +70,88 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.blueAccent,
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Container(
-              color: Colors.white,
-              height: MediaQuery.of(context).size.height * 0.08,
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.location_on),
-                        label: Text("Sri Lanka")),
-                    VerticalDivider(
-                      color: Colors.black,
-                      thickness: 1,
-                      width: 1,
-                      indent: 20,
-                      endIndent: 20,
-                    ),
-                    FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.category),
-                        label: Text("Category")),
-                    VerticalDivider(
-                      color: Colors.black,
-                      thickness: 1,
-                      width: 1,
-                      indent: 20,
-                      endIndent: 20,
-                    ),
-                    FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.equalizer),
-                        label: Text("")),
-                  ]),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height * 0.25),
-                items: [
-                  "assets/img/img1.jpg",
-                  "assets/img/img2.jpg",
-                  "assets/img/img3.jpg",
-                  "assets/img/img4.jpg",
-                  "assets/img/img5.jpg"
-                ].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Image.asset(
-                        i,
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        width: MediaQuery.of(context).size.width,
-                      );
-                    },
-                  );
-                }).toList(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                color: Colors.white,
+                height: MediaQuery.of(context).size.height * 0.08,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FlatButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.location_on),
+                          label: Text("Sri Lanka")),
+                      VerticalDivider(
+                        color: Colors.black,
+                        thickness: 1,
+                        width: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      FlatButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.category),
+                          label: Text("Category")),
+                      VerticalDivider(
+                        color: Colors.black,
+                        thickness: 1,
+                        width: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      FlatButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.equalizer),
+                          label: Text("")),
+                    ]),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SingleChildScrollView(
-              child: Container(
+              SizedBox(
+                height: 5,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                      height: MediaQuery.of(context).size.height * 0.25),
+                  items: [
+                    "assets/img/img1.jpg",
+                    "assets/img/img2.jpg",
+                    "assets/img/img3.jpg",
+                    "assets/img/img4.jpg",
+                    "assets/img/img5.jpg"
+                  ].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Image.asset(
+                          i,
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: MediaQuery.of(context).size.width,
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
                 decoration: new BoxDecoration(
                   borderRadius: new BorderRadius.only(
                       topLeft: const Radius.circular(30.0),
                       topRight: const Radius.circular(30.0)),
                   color: Colors.white,
                 ),
-                height: MediaQuery.of(context).size.height * 0.443,
+                height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: new ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
                     reverse: false,
                     itemBuilder: (_, int index) => EachList(
                         this.Names[index],
@@ -161,8 +162,8 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
@@ -188,52 +189,51 @@ class EachList extends StatelessWidget {
               begin: Alignment.centerRight,
               end: Alignment.centerLeft),
         ),
-        height: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.height * 0.18,
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(8.0),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.asset(
-              photo,
-              height: 100,
-              width: 100,
-            ),
-            new Padding(padding: EdgeInsets.only(right: 20.0)),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: new Text(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: Image.asset(
+                photo,
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.25,
+              ),
+            ),
+            new Padding(padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.04)),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    new Text(
                       name,
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: MediaQuery.of(context).size.height * 0.025, fontWeight: FontWeight.bold),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: new Text(
+                    new Text(
                       location,
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: new Text(
+                    new Text(
                       price,
-                      style: TextStyle(fontSize: 18.0),
                       overflow: TextOverflow.ellipsis,
+                      style:
+                          TextStyle(fontSize: MediaQuery.of(context).size.height * 0.025, fontWeight: FontWeight.w900),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )
           ],
