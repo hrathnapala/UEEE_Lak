@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:lak_app/src/screens/filter/location_filter.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,6 +8,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String location = "Location";
+  @override
+  void initState() {
+    super.initState();
+  }
+
   List<String> Names = [
     'Kelaniya Luxury Apartment for sale',
     'Honda vezel for sale',
@@ -82,9 +89,16 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton.icon(
-                          onPressed: () {},
+                          onPressed: () async {
+                            var result = await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => LocationFilter()));
+                            setState(() {
+                              location = result;
+                            });
+                          },
                           icon: Icon(Icons.location_on),
-                          label: Text("Sri Lanka")),
+                          label: Text("$location")),
                       VerticalDivider(
                         color: Colors.black,
                         thickness: 1,
@@ -152,7 +166,7 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.all(12.0),
                   child: new ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    reverse: false,
+                    primary: false,
                     itemBuilder: (_, int index) => EachList(
                         this.Names[index],
                         this.Location[index],
@@ -204,7 +218,9 @@ class EachList extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.25,
               ),
             ),
-            new Padding(padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.04)),
+            new Padding(
+                padding: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.width * 0.04)),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Container(
@@ -216,8 +232,9 @@ class EachList extends StatelessWidget {
                   children: [
                     new Text(
                       name,
-                      style:
-                          TextStyle(fontSize: MediaQuery.of(context).size.height * 0.025, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height * 0.025,
+                          fontWeight: FontWeight.bold),
                       overflow: TextOverflow.ellipsis,
                     ),
                     new Text(
@@ -229,8 +246,9 @@ class EachList extends StatelessWidget {
                     new Text(
                       price,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: MediaQuery.of(context).size.height * 0.025, fontWeight: FontWeight.w900),
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height * 0.025,
+                          fontWeight: FontWeight.w900),
                     ),
                   ],
                 ),
