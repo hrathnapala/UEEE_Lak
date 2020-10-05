@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../single-ad/single-ad.dart';
 
 class SimilarAds extends StatelessWidget {
   List<String> Names = [
@@ -146,11 +145,7 @@ class EachList extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-              );
-            },
+            onTap: () {},
             child: Padding(
               padding: EdgeInsets.fromLTRB(100.0, 20.0, 20.0, 20.0),
               child: Column(
