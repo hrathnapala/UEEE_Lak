@@ -1,70 +1,70 @@
 import 'package:flutter/material.dart';
 
-class LocationFilter extends StatefulWidget {
+class CategoryFilter extends StatefulWidget {
   @override
-  _LocationFilterState createState() => _LocationFilterState();
+  _CategoryFilterState createState() => _CategoryFilterState();
 }
 
-class _LocationFilterState extends State<LocationFilter> {
-  List<String> locations = [
-    "Colombo",
-    "kandy",
-    "Galle",
-    "Ampara",
-    "Anuradhapura",
-    "Badulla",
-    "Batticaloa",
-    "Gampaha",
-    "Hambantota",
-    "Jaffna",
-    "Kalutara",
-    "Kilinochchi",
-    "Kurunegala",
-    "Mannar",
-    "Matale",
-    "Matara",
-    "Monaragala",
-    "Mullativu",
-    "Nuwara Eliya",
-    "Polonnaruwa",
-    "Puttalam",
-    "Ratnapura",
-    "Trincomalee",
-    "Vavuniya"
+class _CategoryFilterState extends State<CategoryFilter> {
+  List<String> categories = [
+    "Essentials",
+    "Electronics",
+    "Vehicles",
+    "Property",
+    "Jobs in Sri Lanka",
+    "Work Overseas",
+    "Home & Garden",
+    "Fashion & Beauty",
+    "Hobby, Sport & Kids",
+    "Business & Industry",
+    "Services",
+    "Education",
+    "Animals",
+    "Agriculture",
+    "Other",
   ];
-  List<String> filteredlocation = [
-    "Colombo",
-    "kandy",
-    "Galle",
-    "Ampara",
-    "Anuradhapura",
-    "Badulla",
-    "Batticaloa",
-    "Gampaha",
-    "Hambantota",
-    "Jaffna",
-    "Kalutara",
-    "Kilinochchi",
-    "Kurunegala",
-    "Mannar",
-    "Matale",
-    "Matara",
-    "Monaragala",
-    "Mullativu",
-    "Nuwara Eliya",
-    "Polonnaruwa",
-    "Puttalam",
-    "Ratnapura",
-    "Trincomalee",
-    "Vavuniya"
+  List<IconData> images = [
+    Icons.local_grocery_store,
+    Icons.phone_android,
+    Icons.local_taxi,
+    Icons.home,
+    Icons.work,
+    Icons.offline_bolt,
+    Icons.location_city,
+    Icons.watch,
+    Icons.play_arrow,
+    Icons.build,
+    Icons.room_service,
+    Icons.book,
+    Icons.pets,
+    Icons.spa,
+    Icons.devices_other,
+  ];
+  List<String> filteredcategory = [
+    "Essentials",
+    "Electronics",
+    "Vehicles",
+    "Property",
+    "Jobs in Sri Lanka",
+    "Work Overseas",
+    "Home & Garden",
+    "Fashion & Beauty",
+    "Hobby, Sport & Kids",
+    "Business & Industry",
+    "Services",
+    "Education",
+    "Animals",
+    "Agriculture",
+    "Other",
   ];
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick a Location"),
+        title: Text("Pick a Category"),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -82,15 +82,8 @@ class _LocationFilterState extends State<LocationFilter> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              color: Colors.transparent,
-              height: size.height * 0.1,
-              child: FlatButton.icon(
-                  onPressed: () {
-                    Navigator.of(context).pop("Malabe");
-                  },
-                  icon: Icon(Icons.location_on),
-                  label: Text("Use Current Location")),
+            SizedBox(
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -98,7 +91,7 @@ class _LocationFilterState extends State<LocationFilter> {
                 onChanged: (text) {
                   text = text.toLowerCase();
                   setState(() {
-                    filteredlocation = locations.where((location) {
+                    filteredcategory = categories.where((location) {
                       var locationTitle = location.toLowerCase();
                       return locationTitle.contains(text);
                     }).toList();
@@ -108,7 +101,7 @@ class _LocationFilterState extends State<LocationFilter> {
                 decoration: InputDecoration(
                     fillColor: Color(0xffd9d9d9),
                     filled: true,
-                    hintText: "Search for a location",
+                    hintText: "Search for a Category",
                     hintStyle: TextStyle(fontWeight: FontWeight.bold),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
                     focusedBorder: OutlineInputBorder(
@@ -142,7 +135,7 @@ class _LocationFilterState extends State<LocationFilter> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 22.0, vertical: 10.0),
                     child: Text(
-                      "All of Sri Lanka",
+                      "Go to All ads",
                       style: TextStyle(
                         fontSize: 16,
                       ),
@@ -158,20 +151,31 @@ class _LocationFilterState extends State<LocationFilter> {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: filteredlocation.length,
+              itemCount: filteredcategory.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Column(
                     children: <Widget>[
                       ListTile(
-                        title: Text(
-                          '${filteredlocation[index]}',
-                          style: TextStyle(fontSize: 16),
+                        title: Row(
+                          children: [
+                            Icon(
+                              images[index],
+                              color: Colors.blueAccent,
+                            ),
+                            SizedBox(
+                              width: size.width * 0.05,
+                            ),
+                            Text(
+                              '${filteredcategory[index]}',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
                         ),
                         onTap: () {
                           Navigator.of(context)
-                              .pop("${filteredlocation[index]}");
+                              .pop("${filteredcategory[index]}");
                         },
                       ),
                       Divider()
