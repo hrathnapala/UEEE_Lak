@@ -77,7 +77,7 @@ class _CategoryFilterState extends State<CategoryFilter> {
         ),
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: ScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,42 +148,41 @@ class _CategoryFilterState extends State<CategoryFilter> {
                 ],
               ),
             ),
-            Container(
-              height: size.height * 0.77,
-              child: ListView.builder(
-                itemCount: filteredcategory.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: <Widget>[
-                        ListTile(
-                          title: Row(
-                            children: [
-                              Icon(
-                                images[index],
-                                color: Colors.blueAccent,
-                              ),
-                              SizedBox(
-                                width: size.width * 0.05,
-                              ),
-                              Text(
-                                '${filteredcategory[index]}',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          onTap: () {
-                            Navigator.of(context)
-                                .pop("${filteredcategory[index]}");
-                          },
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: filteredcategory.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: Row(
+                          children: [
+                            Icon(
+                              images[index],
+                              color: Colors.blueAccent,
+                            ),
+                            SizedBox(
+                              width: size.width * 0.05,
+                            ),
+                            Text(
+                              '${filteredcategory[index]}',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Divider()
-                      ],
-                    ),
-                  );
-                },
-              ),
+                        onTap: () {
+                          Navigator.of(context)
+                              .pop("${filteredcategory[index]}");
+                        },
+                      ),
+                      Divider()
+                    ],
+                  ),
+                );
+              },
             )
           ],
         ),

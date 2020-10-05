@@ -79,6 +79,7 @@ class _HomeState extends State<Home> {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
+          physics: ScrollPhysics(),
           child: Column(
             children: [
               Container(
@@ -159,28 +160,16 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                decoration: new BoxDecoration(
-                  borderRadius: new BorderRadius.only(
-                      topLeft: const Radius.circular(30.0),
-                      topRight: const Radius.circular(30.0)),
-                  color: Colors.white,
-                ),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: new ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    primary: false,
-                    itemBuilder: (_, int index) => EachList(
-                        this.Names[index],
-                        this.Location[index],
-                        this.Prices[index],
-                        this.Photos[index]),
-                    itemCount: this.Names.length,
-                  ),
-                ),
+               ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                // primary: false,
+                shrinkWrap: true,
+                itemBuilder: (_, int index) => EachList(
+                    this.Names[index],
+                    this.Location[index],
+                    this.Prices[index],
+                    this.Photos[index]),
+                itemCount: this.Names.length,
               ),
             ],
           ),

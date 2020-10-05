@@ -77,7 +77,7 @@ class _LocationFilterState extends State<LocationFilter> {
         ),
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: ScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,31 +155,30 @@ class _LocationFilterState extends State<LocationFilter> {
                 ],
               ),
             ),
-            Container(
-              height: size.height * 0.6,
-              child: ListView.builder(
-                itemCount: filteredlocation.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: <Widget>[
-                        ListTile(
-                          title: Text(
-                            '${filteredlocation[index]}',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          onTap: () {
-                            Navigator.of(context)
-                                .pop("${filteredlocation[index]}");
-                          },
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: filteredlocation.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: Text(
+                          '${filteredlocation[index]}',
+                          style: TextStyle(fontSize: 16),
                         ),
-                        Divider()
-                      ],
-                    ),
-                  );
-                },
-              ),
+                        onTap: () {
+                          Navigator.of(context)
+                              .pop("${filteredlocation[index]}");
+                        },
+                      ),
+                      Divider()
+                    ],
+                  ),
+                );
+              },
             )
           ],
         ),
