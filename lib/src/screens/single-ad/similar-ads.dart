@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:lak_app/src/screens/filter/category_filter.dart';
-import 'package:lak_app/src/screens/filter/location_filter.dart';
-import '../screens/single-ad/single-ad.dart';
+import '../single-ad/single-ad.dart';
 
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  String location = "Location";
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class SimilarAds extends StatelessWidget {
   List<String> Names = [
     'Kelaniya Luxury Apartment for sale',
     'Honda vezel for sale',
@@ -55,126 +41,21 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 80,
-          title: Column(
-            children: [
-              Text(
-                "LAK.lk",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                "22656 results",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: Colors.blueAccent,
-          centerTitle: true,
-        ),
         body: SingleChildScrollView(
-          physics: ScrollPhysics(),
-          child: Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      FlatButton.icon(
-                          onPressed: () async {
-                            var result = await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => LocationFilter()));
-                            setState(() {
-                              if (result != null) {
-                                location = result;
-                              }
-                            });
-                          },
-                          icon: Icon(Icons.location_on),
-                          label: Text("$location")),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CategoryFilter()));
-                          },
-                          icon: Icon(Icons.category),
-                          label: Text("Category")),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {},
-                          icon: Icon(Icons.equalizer),
-                          label: Text("")),
-                    ]),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.25),
-                  items: [
-                    "assets/img/img1.jpg",
-                    "assets/img/img2.jpg",
-                    "assets/img/img3.jpg",
-                    "assets/img/img4.jpg",
-                    "assets/img/img5.jpg"
-                  ].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Image.asset(
-                          i,
-                          height: MediaQuery.of(context).size.height * 0.35,
-                          width: MediaQuery.of(context).size.width,
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                // primary: false,
-                shrinkWrap: true,
-                itemBuilder: (_, int index) => EachList(
-                    this.Names[index],
-                    this.Location[index],
-                    this.Prices[index],
-                    this.Photos[index]),
-                itemCount: this.Names.length,
-              ),
-            ],
+      physics: ScrollPhysics(),
+      child: Column(
+        children: [
+          ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            // primary: false,
+            shrinkWrap: true,
+            itemBuilder: (_, int index) => EachList(this.Names[index],
+                this.Location[index], this.Prices[index], this.Photos[index]),
+            itemCount: this.Names.length,
           ),
-        ));
+        ],
+      ),
+    ));
   }
 }
 
@@ -268,7 +149,6 @@ class EachList extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SingleAd()),
               );
             },
             child: Padding(

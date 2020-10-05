@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'chat-model.dart';
 import 'conversation-page.dart';
-import '../single-ad/single-ad.dart';
 
 class MainMessagePage extends StatelessWidget {
   @override
@@ -98,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SingleAd(),
+                        builder: (context) => ConversationApp(),
                       ),
                     );
                   },

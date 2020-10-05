@@ -3,6 +3,7 @@ import 'section.dart';
 import 'price-section.dart';
 import 'detail-section.dart';
 import 'image-banner.dart';
+import 'similar-ads.dart';
 
 class SingleAd extends StatelessWidget {
   @override
@@ -32,7 +33,8 @@ class SingleAd extends StatelessWidget {
                   "Toyota Vitz", "Posted on 6 Aug 2020", "Kaduwela, Colombo"),
               PriceSection("Rs 5, 000, 000", "Sale by Amith Weerasena"),
               DetailSection("Category       Cars", "Brand             Toyota",
-                  "Model             Vitz", "Condition       Brand-new")
+                  "Model             Vitz", "Condition       Brand-new"),
+              SimilarAds()
             ],
           ),
         ));
