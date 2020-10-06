@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lak_app/src/screens/chat.dart';
 import 'package:lak_app/src/screens/home.dart';
-import 'package:lak_app/src/screens/location.dart';
 import 'package:lak_app/src/screens/profile.dart';
 import 'package:lak_app/src/screens/search.dart';
 import 'message-page/main-message-page.dart';
@@ -12,14 +10,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  int _currentIndex = 0;
   int currentTab = 0; // to keep track of active tab index
-  // final List<Widget> screens = [
-  //   // Dashboard(),
-  //   // Chat(),
-  //   // Profile(),
-  //   // Settings(),
-  // ];
 
   @override
   Widget build(BuildContext context) {

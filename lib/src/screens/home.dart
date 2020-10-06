@@ -160,7 +160,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 10,
               ),
-               ListView.builder(
+              ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 // primary: false,
                 shrinkWrap: true,
