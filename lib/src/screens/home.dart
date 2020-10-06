@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                       ),
                       FlatButton.icon(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(
                                 builder: (context) => CategoryFilter()));
                           },
                           icon: Icon(Icons.category),

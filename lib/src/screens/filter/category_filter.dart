@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/filter/home_clone.dart';
 import 'package:lak_app/src/screens/home.dart';
 import 'package:lak_app/src/screens/homepage.dart';
@@ -76,7 +77,8 @@ class _CategoryFilterState extends State<CategoryFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop(null);
+             Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MyApp()));
           },
         ),
       ),

@@ -16,7 +16,7 @@ class HomeClone extends StatefulWidget {
 }
 
 class _HomeCloneState extends State<HomeClone> {
-  String location = LocationModel.getLocation();
+  String location = LocationModel.getLocation().isNotEmpty?LocationModel.getLocation():"Sri Lanka";
   String filterPrice = "";
 
   @override
