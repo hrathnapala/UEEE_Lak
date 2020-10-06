@@ -22,6 +22,8 @@ class _HomepageState extends State<Homepage> {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      //this line is added to avoid moving floating action button
+      resizeToAvoidBottomPadding: false,
       bottomNavigationBar: BottomAppBar(
         color: Color(0xff75A6D5),
         shape: CircularNotchedRectangle(),
