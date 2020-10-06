@@ -170,6 +170,7 @@ class _LocationFilterState extends State<LocationFilter> {
                           style: TextStyle(fontSize: 16),
                         ),
                         onTap: () {
+                          
                           Navigator.of(context)
                               .pop("${filteredlocation[index]}");
                         },

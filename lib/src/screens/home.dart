@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                     children: [
                       FlatButton.icon(
                           onPressed: () async {
-                            var result = await Navigator.of(context).pushReplacement(
+                            var result = await Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => LocationFilter()));
                             setState(() {

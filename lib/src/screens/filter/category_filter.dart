@@ -178,10 +178,10 @@ class _CategoryFilterState extends State<CategoryFilter> {
                           ],
                         ),
                         onTap: () {
-                          // Navigator.of(context)
-                          //     .pop("${filteredcategory[index]}");
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                builder: (context) => HomeClone(location:filteredcategory[index])));
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => HomeClone(
+                                      location: filteredcategory[index])));
                         },
                       ),
                       Divider()
