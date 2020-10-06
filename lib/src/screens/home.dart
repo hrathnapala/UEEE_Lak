@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
+import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
 import '../screens/single-ad/single-ad.dart';
 
@@ -126,7 +127,10 @@ class _HomeState extends State<Home> {
                         endIndent: 20,
                       ),
                       FlatButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CommonFilter()));
+                          },
                           icon: Icon(Icons.equalizer),
                           label: Text("")),
                     ]),
