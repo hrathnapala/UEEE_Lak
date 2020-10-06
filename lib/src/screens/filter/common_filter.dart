@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/homepage.dart';
 
 class CommonFilter extends StatefulWidget {
@@ -234,7 +235,7 @@ class _CommonFilterState extends State<CommonFilter> {
                     child: RaisedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Homepage()));
+                                builder: (context) => MyApp()));
                   },
                   child: Text("Apply Filters"),
                   color: Color(0xff55b4d4),
