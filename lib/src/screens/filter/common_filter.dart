@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/src/screens/homepage.dart';
 
 class CommonFilter extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class CommonFilter extends StatefulWidget {
 class _CommonFilterState extends State<CommonFilter> {
   String dropdownValue = 'Date:Newest first';
   String dropdownValue2 = 'All Posters';
+  String dropdownValue3 = 'All';
+  bool check = true;
+  String groupvalue = "no";
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +39,15 @@ class _CommonFilterState extends State<CommonFilter> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: size.height * 0.1,
+                  height: size.height * 0.02,
                 ),
                 Text(
-                  "Sort by",
-                  style: TextStyle(color: Colors.grey),
+                  "Sort by:",
+                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                 SizedBox(
+                  height: size.height * 0.01,
+                ),
                 DropdownButton<String>(
                   isDense: true,
                   isExpanded: true,
@@ -71,10 +77,12 @@ class _CommonFilterState extends State<CommonFilter> {
                 ),
                 SizedBox(height: size.height * 0.04),
                 Text(
-                  "Sort by",
-                  style: TextStyle(color: Colors.grey),
+                  "Type of poster:",
+                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                 SizedBox(
+                  height: size.height * 0.01,
+                ),
                 DropdownButton<String>(
                   isDense: true,
                   isExpanded: true,
@@ -102,29 +110,54 @@ class _CommonFilterState extends State<CommonFilter> {
                     );
                   }).toList(),
                 ),
-                SizedBox(height: size.height * 0.05),
+                SizedBox(
+                  height: size.height * 0.03,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                        label: Text("data")),
-                    FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                        label: Text("data"))
+                    Radio(
+                        value: "yes",
+                        groupValue: groupvalue,
+                        onChanged: (val) {
+                          setState(() {
+                            groupvalue = val;
+                          });
+                        }),
+                    Text("For Sale",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black87)),
+                    SizedBox(
+                      width: size.width * 0.1,
+                    ),
+                    Radio(
+                        value: "no",
+                        groupValue: groupvalue,
+                        onChanged: (val) {
+                          setState(() {
+                            groupvalue = val;
+                          });
+                        }),
+                    Text("Wanted to buy",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black87)),
                   ],
                 ),
-                SizedBox(height: size.height * 0.04),
+
+                SizedBox(height: size.height * 0.03),
                 Text(
-                  "Sort by",
-                  style: TextStyle(color: Colors.grey),
+                  "Condition:",
+                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                 SizedBox(
+                  height: size.height * 0.01,
+                ),
                 DropdownButton<String>(
                   isDense: true,
                   isExpanded: true,
-                  value: dropdownValue2,
+                  value: dropdownValue3,
                   elevation: 20,
                   style: TextStyle(color: Colors.black45, fontSize: 18),
                   underline: Container(
@@ -133,14 +166,13 @@ class _CommonFilterState extends State<CommonFilter> {
                   ),
                   onChanged: (String newValue) {
                     setState(() {
-                      dropdownValue2 = newValue;
+                      dropdownValue3 = newValue;
                     });
                   },
                   items: <String>[
-                    'All Posters',
-                    'Members',
-                    'Authorized dealers',
-                    'Non-members'
+                    'All',
+                    'New',
+                    'Used',
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -148,12 +180,68 @@ class _CommonFilterState extends State<CommonFilter> {
                     );
                   }).toList(),
                 ),
-                SizedBox(height: size.height * 0.2),
+                 SizedBox(
+                  height: size.height * 0.02,
+                ),
+                Text(
+                  "Price:",
+                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'From',
+                    prefixIcon: Icon(Icons.money_off),
+                  ),
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'To',
+                    prefixIcon: Icon(Icons.money_off),
+                  ),
+                ),
+                SizedBox(height: size.height*0.05),
                 Center(
-                    child: FlatButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                        label: Text("data")))
+                  child: Column(
+                    children: [
+                      Text(
+                        "Filter ads by:",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                              value: check,
+                              onChanged: (value) {
+                                setState(() {
+                                  check = value;
+                                });
+                              }),
+                          Text("Urgent")
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: size.height * 0.01),
+                Center(
+                    child: RaisedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Homepage()));
+                  },
+                  child: Text("Apply Filters"),
+                  color: Color(0xff55b4d4),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.blueGrey)),
+                ))
               ],
             ),
           )),
