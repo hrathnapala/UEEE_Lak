@@ -15,6 +15,8 @@ class HomeClone extends StatefulWidget {
 
 class _HomeCloneState extends State<HomeClone> {
   // String location = "Location";
+    String filterPrice = "";
+
   @override
   void initState() {
     super.initState();
@@ -85,15 +87,9 @@ class _HomeCloneState extends State<HomeClone> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton.icon(
-                          onPressed: () async {
-                            var result = await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => LocationFilter()));
-                            // setState(() {
-                            //   if (result != null) {
-                            //     location = result;
-                            //   }
-                            // });
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => LocationFilter()));
                           },
                           icon: Icon(Icons.location_on),
                           label: Text("Malabe")),
@@ -119,9 +115,15 @@ class _HomeCloneState extends State<HomeClone> {
                         endIndent: 20,
                       ),
                       FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CommonFilter()));
+                          onPressed: () async {
+                            String response = await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => CommonFilter()));
+                            setState(() {
+                              filterPrice = response;
+                            });
+                            print(filterPrice);
+
                           },
                           icon: Icon(Icons.equalizer),
                           label: Text("")),
@@ -157,6 +159,13 @@ class _HomeCloneState extends State<HomeClone> {
               SizedBox(
                 height: 10,
               ),
+              Text(
+                filterPrice,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 // primary: false,
@@ -182,74 +191,6 @@ class EachList extends StatelessWidget {
   EachList(this.name, this.location, this.price, this.photo);
   @override
   Widget build(BuildContext context) {
-    // return new Card(
-    //   child: new Container(
-    //     decoration: BoxDecoration(
-    //       borderRadius: new BorderRadius.only(
-    //           topLeft: const Radius.circular(30.0),
-    //           topRight: const Radius.circular(30.0),
-    //           bottomLeft: const Radius.circular(30.0),
-    //           bottomRight: const Radius.circular(30.0)),
-    //       gradient: new LinearGradient(
-    //           colors: [Colors.grey, Colors.blueAccent],
-    //           begin: Alignment.centerRight,
-    //           end: Alignment.centerLeft),
-    //     ),
-    //     height: MediaQuery.of(context).size.height * 0.18,
-    //     width: MediaQuery.of(context).size.width,
-    //     padding: EdgeInsets.all(8.0),
-    //     child: new Row(
-    //       mainAxisAlignment: MainAxisAlignment.start,
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: <Widget>[
-    //         Padding(
-    //           padding: const EdgeInsets.symmetric(vertical: 15.0),
-    //           child: Image.asset(
-    //             photo,
-    //             height: MediaQuery.of(context).size.height * 0.1,
-    //             width: MediaQuery.of(context).size.width * 0.25,
-    //           ),
-    //         ),
-    //         new Padding(
-    //             padding: EdgeInsets.only(
-    //                 right: MediaQuery.of(context).size.width * 0.04)),
-    //         Padding(
-    //           padding: const EdgeInsets.symmetric(vertical: 20.0),
-    //           child: Container(
-    //             width: MediaQuery.of(context).size.width * 0.5,
-    //             height: MediaQuery.of(context).size.height * 0.1,
-    //             child: Column(
-    //               mainAxisAlignment: MainAxisAlignment.start,
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: [
-    //                 new Text(
-    //                   name,
-    //                   style: TextStyle(
-    //                       fontSize: MediaQuery.of(context).size.height * 0.025,
-    //                       fontWeight: FontWeight.bold),
-    //                   overflow: TextOverflow.ellipsis,
-    //                 ),
-    //                 new Text(
-    //                   location,
-    //                   style:
-    //                       TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-    //                   overflow: TextOverflow.ellipsis,
-    //                 ),
-    //                 new Text(
-    //                   price,
-    //                   overflow: TextOverflow.ellipsis,
-    //                   style: TextStyle(
-    //                       fontSize: MediaQuery.of(context).size.height * 0.025,
-    //                       fontWeight: FontWeight.w900),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
     return Stack(
       children: <Widget>[
         Container(
