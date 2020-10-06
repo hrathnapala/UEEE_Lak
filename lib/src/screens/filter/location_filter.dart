@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 
 class LocationFilter extends StatefulWidget {
@@ -73,7 +74,7 @@ class _LocationFilterState extends State<LocationFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop(null);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
           },
         ),
       ),

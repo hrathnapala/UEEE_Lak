@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
@@ -71,7 +72,8 @@ class _HomeCloneState extends State<HomeClone> {
               size: 30,
             ),
             onPressed: () {
-              Navigator.of(context).pop(null);
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
         ),
@@ -88,12 +90,13 @@ class _HomeCloneState extends State<HomeClone> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton.icon(
-                          onPressed: () async{
-                           String value = await Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LocationFilter()));
-                                setState(() {
-                                  location = value;
-                                });
+                          onPressed: () async {
+                            String value = await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => LocationFilter()));
+                            setState(() {
+                              location = value;
+                            });
                           },
                           icon: Icon(Icons.location_on),
                           label: Text(location)),
@@ -163,7 +166,10 @@ class _HomeCloneState extends State<HomeClone> {
               ),
               Text(
                 filterPrice,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,color: Colors.blueGrey),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.blueGrey),
               ),
               SizedBox(
                 height: 10,
