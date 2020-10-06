@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lak_app/src/screens/profile-page/favorites-page.dart';
 import 'package:lak_app/src/screens/profile-page/my-membership-page.dart';
+import 'package:lak_app/src/screens/profile-page/my-profile-page.dart';
 import 'package:lak_app/src/screens/profile-page/myads-page.dart';
 
 class SettingsModel {
@@ -23,7 +24,7 @@ class SettingsModel {
     SettingsModel(
         settingName: "My Profile",
         icon: Icon(Icons.description),
-        nextPage: MyAds()),
+        nextPage: MyPersonalProfile()),
     SettingsModel(
         settingName: "Favorites",
         icon: Icon(Icons.favorite),
