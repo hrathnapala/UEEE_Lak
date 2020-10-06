@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/main.dart';
+import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 
 class LocationFilter extends StatefulWidget {
   @override
@@ -72,7 +74,7 @@ class _LocationFilterState extends State<LocationFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop(null);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
           },
         ),
       ),
@@ -106,8 +108,6 @@ class _LocationFilterState extends State<LocationFilter> {
                 },
                 autofocus: false,
                 decoration: InputDecoration(
-                    fillColor: Color(0xffd9d9d9),
-                    filled: true,
                     hintText: "Search for a location",
                     hintStyle: TextStyle(fontWeight: FontWeight.bold),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
@@ -170,6 +170,9 @@ class _LocationFilterState extends State<LocationFilter> {
                           style: TextStyle(fontSize: 16),
                         ),
                         onTap: () {
+                          setState(() {
+                            LocationModel.setLocation(filteredlocation[index]);
+                          });
                           Navigator.of(context)
                               .pop("${filteredlocation[index]}");
                         },

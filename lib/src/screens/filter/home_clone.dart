@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
-import '../screens/single-ad/single-ad.dart';
+import 'package:lak_app/src/screens/single-ad/single-ad.dart';
+// import '../screens/single-ad/single-ad.dart';
 
-class Home extends StatefulWidget {
+class HomeClone extends StatefulWidget {
+  final String location;
+  HomeClone({this.location});
   @override
-  _HomeState createState() => _HomeState();
+  _HomeCloneState createState() => _HomeCloneState();
 }
 
-class _HomeState extends State<Home> {
-  String location = "Location";
+class _HomeCloneState extends State<HomeClone> {
+  String location = LocationModel.getLocation().isNotEmpty?LocationModel.getLocation():"Sri Lanka";
+  String filterPrice = "";
+
   @override
   void initState() {
     super.initState();
@@ -58,28 +64,18 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 80,
-          title: Column(
-            children: [
-              Text(
-                "LAK.lk",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                "22656 results",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: Colors.blueAccent,
+          title: Text("${widget.location}"),
           centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              size: 30,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MyApp()));
+            },
+          ),
         ),
         body: SingleChildScrollView(
           physics: ScrollPhysics(),
@@ -95,18 +91,15 @@ class _HomeState extends State<Home> {
                     children: [
                       FlatButton.icon(
                           onPressed: () async {
-                            var result = await Navigator.of(context).push(
+                            String value = await Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => LocationFilter()));
                             setState(() {
-                              if (result != null) {
-                                LocationModel.setLocation(result);
-                                location = result;
-                              }
+                              location = value;
                             });
                           },
                           icon: Icon(Icons.location_on),
-                          label: Text("$location")),
+                          label: Text(location)),
                       VerticalDivider(
                         color: Colors.black,
                         thickness: 1,
@@ -116,25 +109,29 @@ class _HomeState extends State<Home> {
                       ),
                       FlatButton.icon(
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => CategoryFilter()));
                           },
                           icon: Icon(Icons.category),
-                          label: Text("Category")),
-                      // VerticalDivider(
-                      //   color: Colors.black,
-                      //   thickness: 1,
-                      //   width: 1,
-                      //   indent: 20,
-                      //   endIndent: 20,
-                      // ),
-                      // FlatButton.icon(
-                      //     onPressed: () {
-                      //       Navigator.of(context).push(MaterialPageRoute(
-                      //           builder: (context) => CommonFilter()));
-                      //     },
-                      //     icon: Icon(Icons.equalizer),
-                      //     label: Text("")),
+                          label: Text("${widget.location}")),
+                      VerticalDivider(
+                        color: Colors.black,
+                        thickness: 1,
+                        width: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      FlatButton.icon(
+                          onPressed: () async {
+                            String response = await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => CommonFilter()));
+                            setState(() {
+                              filterPrice = response;
+                            });
+                          },
+                          icon: Icon(Icons.equalizer),
+                          label: Text("")),
                     ]),
               ),
               SizedBox(
@@ -163,6 +160,16 @@ class _HomeState extends State<Home> {
                     );
                   }).toList(),
                 ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                filterPrice,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.blueGrey),
               ),
               SizedBox(
                 height: 10,
@@ -204,7 +211,7 @@ class EachList extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => SingleAd()),
               );
