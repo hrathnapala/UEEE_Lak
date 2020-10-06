@@ -30,7 +30,7 @@ class _CommonFilterState extends State<CommonFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop("");
           },
         ),
       ),
