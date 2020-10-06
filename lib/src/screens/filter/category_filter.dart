@@ -103,8 +103,6 @@ class _CategoryFilterState extends State<CategoryFilter> {
                 },
                 autofocus: false,
                 decoration: InputDecoration(
-                    fillColor: Color(0xffd9d9d9),
-                    filled: true,
                     hintText: "Search for a Category",
                     hintStyle: TextStyle(fontWeight: FontWeight.bold),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),

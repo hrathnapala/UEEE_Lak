@@ -106,8 +106,6 @@ class _LocationFilterState extends State<LocationFilter> {
                 },
                 autofocus: false,
                 decoration: InputDecoration(
-                    fillColor: Color(0xffd9d9d9),
-                    filled: true,
                     hintText: "Search for a location",
                     hintStyle: TextStyle(fontWeight: FontWeight.bold),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
@@ -170,7 +168,6 @@ class _LocationFilterState extends State<LocationFilter> {
                           style: TextStyle(fontSize: 16),
                         ),
                         onTap: () {
-                          
                           Navigator.of(context)
                               .pop("${filteredlocation[index]}");
                         },
