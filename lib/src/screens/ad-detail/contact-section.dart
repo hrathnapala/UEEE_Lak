@@ -15,14 +15,16 @@ class ContactSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(_hpad, 15, _hpad, 5.0),
-            child: Text(_tp1,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(_hpad, 0, _hpad, 15.0),
-            child: Text(_tp2,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+            padding: const EdgeInsets.fromLTRB(_hpad, 8, _hpad, 15.0),
+            child: RaisedButton(
+              color: Colors.blue,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(30, 10, 30, 10.0),
+                child: Text("Call - 077 32 65 977",
+                    style: TextStyle(fontSize: 18.0)),
+              ),
+              onPressed: () {},
+            ),
           ),
         ]);
   }

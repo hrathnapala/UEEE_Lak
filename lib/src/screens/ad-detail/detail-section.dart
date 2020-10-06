@@ -36,7 +36,7 @@ class DetailSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(_hpad, 30, _hpad, 1.0),
+            padding: const EdgeInsets.fromLTRB(_hpad, 50, _hpad, 1.0),
             child: Text(_detail1,
                 style: TextStyle(fontSize: 17.0, color: Colors.grey[700])),
           ),

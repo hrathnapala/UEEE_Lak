@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lak_app/src/screens/home.dart';
 import 'package:lak_app/src/screens/profile-page/main-profile-page.dart';
-import 'package:lak_app/src/screens/search.dart';
+import 'package:lak_app/src/screens/search/search.dart';
 import 'message-page/main-message-page.dart';
 import './post-ad/locations.dart';
 

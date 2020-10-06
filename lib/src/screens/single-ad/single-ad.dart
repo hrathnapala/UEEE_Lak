@@ -3,6 +3,8 @@ import 'section.dart';
 import 'price-section.dart';
 import 'detail-section.dart';
 import 'image-banner.dart';
+import '../home.dart';
+import '../ad-share/ad-share.dart';
 
 class SingleAd extends StatelessWidget {
   @override
@@ -10,11 +12,27 @@ class SingleAd extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Details'),
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+            },
+            child: Icon(
+              Icons.arrow_back,
+            ),
+          ),
           actions: <Widget>[
             Padding(
                 padding: EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AdShare()),
+                    );
+                  },
                   child: Icon(
                     Icons.share,
                     size: 26.0,
