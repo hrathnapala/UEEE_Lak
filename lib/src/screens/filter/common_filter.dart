@@ -14,6 +14,9 @@ class _CommonFilterState extends State<CommonFilter> {
   bool check = true;
   String groupvalue = "no";
 
+  final toPrice = TextEditingController();
+  final fromPrice = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -27,7 +30,7 @@ class _CommonFilterState extends State<CommonFilter> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pop(null);
+            Navigator.of(context).pop("");
           },
         ),
       ),
@@ -44,9 +47,12 @@ class _CommonFilterState extends State<CommonFilter> {
                 ),
                 Text(
                   "Sort by:",
-                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: size.height * 0.01,
                 ),
                 DropdownButton<String>(
@@ -79,9 +85,12 @@ class _CommonFilterState extends State<CommonFilter> {
                 SizedBox(height: size.height * 0.04),
                 Text(
                   "Type of poster:",
-                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: size.height * 0.01,
                 ),
                 DropdownButton<String>(
@@ -146,13 +155,15 @@ class _CommonFilterState extends State<CommonFilter> {
                             color: Colors.black87)),
                   ],
                 ),
-
                 SizedBox(height: size.height * 0.03),
                 Text(
                   "Condition:",
-                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: size.height * 0.01,
                 ),
                 DropdownButton<String>(
@@ -181,14 +192,18 @@ class _CommonFilterState extends State<CommonFilter> {
                     );
                   }).toList(),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: size.height * 0.02,
                 ),
                 Text(
                   "Price:",
-                  style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
                 TextField(
+                  controller: fromPrice,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'From',
@@ -196,13 +211,14 @@ class _CommonFilterState extends State<CommonFilter> {
                   ),
                 ),
                 TextField(
+                  controller: toPrice,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'To',
                     prefixIcon: Icon(Icons.money_off),
                   ),
                 ),
-                SizedBox(height: size.height*0.05),
+                SizedBox(height: size.height * 0.05),
                 Center(
                   child: Column(
                     children: [
@@ -234,8 +250,17 @@ class _CommonFilterState extends State<CommonFilter> {
                 Center(
                     child: RaisedButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MyApp()));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //             builder: (context) => MyApp()));
+                    if (toPrice.text.length != 0 &&
+                        fromPrice.text.length != 0) {
+                      Navigator.of(context)
+                          .pop("filters: Rs ${fromPrice.text} - ${toPrice.text}, condition: $dropdownValue3");
+                    } else if (dropdownValue3.length != 0){
+                      Navigator.of(context).pop("filters:  condition: $dropdownValue3");
+                    }else{
+                      Navigator.of(context).pop();
+                    }
                   },
                   child: Text("Apply Filters"),
                   color: Color(0xff55b4d4),

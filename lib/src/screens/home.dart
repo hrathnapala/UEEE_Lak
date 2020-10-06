@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
+import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
 import '../screens/single-ad/single-ad.dart';
 
@@ -99,6 +100,7 @@ class _HomeState extends State<Home> {
                                     builder: (context) => LocationFilter()));
                             setState(() {
                               if (result != null) {
+                                LocationModel.setLocation(result);
                                 location = result;
                               }
                             });
@@ -114,25 +116,25 @@ class _HomeState extends State<Home> {
                       ),
                       FlatButton.icon(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(
                                 builder: (context) => CategoryFilter()));
                           },
                           icon: Icon(Icons.category),
                           label: Text("Category")),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CommonFilter()));
-                          },
-                          icon: Icon(Icons.equalizer),
-                          label: Text("")),
+                      // VerticalDivider(
+                      //   color: Colors.black,
+                      //   thickness: 1,
+                      //   width: 1,
+                      //   indent: 20,
+                      //   endIndent: 20,
+                      // ),
+                      // FlatButton.icon(
+                      //     onPressed: () {
+                      //       Navigator.of(context).push(MaterialPageRoute(
+                      //           builder: (context) => CommonFilter()));
+                      //     },
+                      //     icon: Icon(Icons.equalizer),
+                      //     label: Text("")),
                     ]),
               ),
               SizedBox(
