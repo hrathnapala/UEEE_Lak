@@ -203,7 +203,7 @@ class _CommonFilterState extends State<CommonFilter> {
                       fontWeight: FontWeight.bold),
                 ),
                 TextField(
-                  controller: toPrice,
+                  controller: fromPrice,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'From',
@@ -211,7 +211,7 @@ class _CommonFilterState extends State<CommonFilter> {
                   ),
                 ),
                 TextField(
-                  controller: fromPrice,
+                  controller: toPrice,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'To',
