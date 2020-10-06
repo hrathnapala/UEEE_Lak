@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lak_app/src/screens/home.dart';
-import 'package:lak_app/src/screens/location.dart';
 import 'package:lak_app/src/screens/profile-page/main-profile-page.dart';
-import 'package:lak_app/src/screens/profile.dart';
 import 'package:lak_app/src/screens/search.dart';
 import 'message-page/main-message-page.dart';
+import './post-ad/locations.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -21,7 +20,12 @@ class _HomepageState extends State<Homepage> {
       body: currentScreen,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Location()),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //this line is added to avoid moving floating action button
