@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/src/screens/filter/home_clone.dart';
+import 'package:lak_app/src/screens/home.dart';
+import 'package:lak_app/src/screens/homepage.dart';
+import 'package:lak_app/src/screens/message-page/main-message-page.dart';
 
 class CategoryFilter extends StatefulWidget {
   @override
@@ -174,8 +178,10 @@ class _CategoryFilterState extends State<CategoryFilter> {
                           ],
                         ),
                         onTap: () {
-                          Navigator.of(context)
-                              .pop("${filteredcategory[index]}");
+                          // Navigator.of(context)
+                          //     .pop("${filteredcategory[index]}");
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                builder: (context) => HomeClone(location:filteredcategory[index])));
                         },
                       ),
                       Divider()
