@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lak_app/src/screens/home.dart';
-<<<<<<< HEAD
-=======
 import 'package:lak_app/src/screens/location.dart';
 import 'package:lak_app/src/screens/profile-page/main-profile-page.dart';
->>>>>>> 711222539d2b5ef02e75bde8a2a616eb0228ce6d
 import 'package:lak_app/src/screens/profile.dart';
 import 'package:lak_app/src/screens/search.dart';
 import 'message-page/main-message-page.dart';
