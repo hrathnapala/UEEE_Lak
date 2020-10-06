@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 
 class LocationFilter extends StatefulWidget {
   @override
@@ -168,6 +169,9 @@ class _LocationFilterState extends State<LocationFilter> {
                           style: TextStyle(fontSize: 16),
                         ),
                         onTap: () {
+                          setState(() {
+                            LocationModel.setLocation(filteredlocation[index]);
+                          });
                           Navigator.of(context)
                               .pop("${filteredlocation[index]}");
                         },

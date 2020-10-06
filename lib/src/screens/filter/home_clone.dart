@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
+import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
 import 'package:lak_app/src/screens/single-ad/single-ad.dart';
 // import '../screens/single-ad/single-ad.dart';
@@ -14,7 +15,7 @@ class HomeClone extends StatefulWidget {
 }
 
 class _HomeCloneState extends State<HomeClone> {
-  // String location = "Location";
+  String location = LocationModel.getLocation();
   String filterPrice = "";
 
   @override
@@ -87,12 +88,15 @@ class _HomeCloneState extends State<HomeClone> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                          onPressed: () async{
+                           String value = await Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => LocationFilter()));
+                                setState(() {
+                                  location = value;
+                                });
                           },
                           icon: Icon(Icons.location_on),
-                          label: Text("Malabe")),
+                          label: Text(location)),
                       VerticalDivider(
                         color: Colors.black,
                         thickness: 1,
