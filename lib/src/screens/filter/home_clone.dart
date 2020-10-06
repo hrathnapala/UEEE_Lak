@@ -15,7 +15,7 @@ class HomeClone extends StatefulWidget {
 
 class _HomeCloneState extends State<HomeClone> {
   // String location = "Location";
-    String filterPrice = "";
+  String filterPrice = "";
 
   @override
   void initState() {
@@ -122,8 +122,6 @@ class _HomeCloneState extends State<HomeClone> {
                             setState(() {
                               filterPrice = response;
                             });
-                            print(filterPrice);
-
                           },
                           icon: Icon(Icons.equalizer),
                           label: Text("")),
@@ -161,7 +159,7 @@ class _HomeCloneState extends State<HomeClone> {
               ),
               Text(
                 filterPrice,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,color: Colors.blueGrey),
               ),
               SizedBox(
                 height: 10,

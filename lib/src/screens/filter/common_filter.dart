@@ -255,9 +255,11 @@ class _CommonFilterState extends State<CommonFilter> {
                     if (toPrice.text.length != 0 &&
                         fromPrice.text.length != 0) {
                       Navigator.of(context)
-                          .pop("filters: Rs ${fromPrice.text} - ${toPrice.text}");
-                    } else {
-                      Navigator.of(context).pop("");
+                          .pop("filters: Rs ${fromPrice.text} - ${toPrice.text}, condition: $dropdownValue3");
+                    } else if (dropdownValue3.length != 0){
+                      Navigator.of(context).pop("filters:  condition: $dropdownValue3");
+                    }else{
+                      Navigator.of(context).pop();
                     }
                   },
                   child: Text("Apply Filters"),
