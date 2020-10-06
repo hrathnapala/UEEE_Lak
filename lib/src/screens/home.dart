@@ -119,20 +119,20 @@ class _HomeState extends State<Home> {
                           },
                           icon: Icon(Icons.category),
                           label: Text("Category")),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CommonFilter()));
-                          },
-                          icon: Icon(Icons.equalizer),
-                          label: Text("")),
+                      // VerticalDivider(
+                      //   color: Colors.black,
+                      //   thickness: 1,
+                      //   width: 1,
+                      //   indent: 20,
+                      //   endIndent: 20,
+                      // ),
+                      // FlatButton.icon(
+                      //     onPressed: () {
+                      //       Navigator.of(context).push(MaterialPageRoute(
+                      //           builder: (context) => CommonFilter()));
+                      //     },
+                      //     icon: Icon(Icons.equalizer),
+                      //     label: Text("")),
                     ]),
               ),
               SizedBox(
