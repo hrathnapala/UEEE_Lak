@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lak_app/src/screens/home.dart';
+import 'package:lak_app/src/screens/homepage.dart';
 
 class Favorites extends StatelessWidget {
   @override
@@ -71,7 +73,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           SizedBox(
             height: 15,
           ),
-          Center(
+          GestureDetector(
             child: Text(
               "Explore Ads >",
               textAlign: TextAlign.center,
@@ -82,6 +84,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ));
+            },
           ),
         ],
       ),
