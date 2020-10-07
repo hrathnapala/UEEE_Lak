@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
-import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
+import 'package:lak_app/src/screens/message-page/home_carousel.dart';
 import '../screens/single-ad/single-ad.dart';
 
 class Home extends StatefulWidget {
@@ -63,6 +62,7 @@ class _HomeState extends State<Home> {
     '8 minute ago',
     '6 days ago'
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,33 +150,34 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 5,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.25),
-                  items: [
-                    "assets/img/img1.jpg",
-                    "assets/img/img2.jpg",
-                    "assets/img/img3.jpg",
-                    "assets/img/img4.jpg",
-                    "assets/img/img5.jpg"
-                  ].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Image.asset(
-                          i,
-                          height: MediaQuery.of(context).size.height * 0.35,
-                          width: MediaQuery.of(context).size.width,
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(30),
+              //   child: CarouselSlider(
+              //     options: CarouselOptions(
+              //         height: MediaQuery.of(context).size.height * 0.25),
+              //     items: [
+              //       "assets/img/img1.jpg",
+              //       "assets/img/img2.jpg",
+              //       "assets/img/img3.jpg",
+              //       "assets/img/img4.jpg",
+              //       "assets/img/img5.jpg"
+              //     ].map((i) {
+              //       return Builder(
+              //         builder: (BuildContext context) {
+              //           return Image.asset(
+              //             i,
+              //             height: MediaQuery.of(context).size.height * 0.35,
+              //             width: MediaQuery.of(context).size.width,
+              //           );
+              //         },
+              //       );
+              //     }).toList(),
+              //   ),
+              // ),
+              HomeCarousel(),
+              // SizedBox(
+              //   height: 10,
+              // ),
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 // primary: false,

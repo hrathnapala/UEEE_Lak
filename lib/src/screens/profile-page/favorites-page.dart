@@ -3,15 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:lak_app/src/screens/home.dart';
 import 'package:lak_app/src/screens/homepage.dart';
 
-class Favorites extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FavoritesScreen(),
-    );
-  }
-}
-
 class FavoritesScreen extends StatefulWidget {
   @override
   _FavoritesScreenState createState() => _FavoritesScreenState();

@@ -8,7 +8,7 @@ import 'package:lak_app/src/screens/profile-page/myads-page.dart';
 class SettingsModel {
   final String settingName;
   final Icon icon;
-  StatelessWidget nextPage;
+  StatefulWidget nextPage;
 
   SettingsModel({this.settingName, this.icon, this.nextPage});
 
@@ -16,38 +16,42 @@ class SettingsModel {
     SettingsModel(
         settingName: "My ads",
         icon: Icon(Icons.card_membership),
-        nextPage: MyAds()),
+        nextPage: MyAdsScreen()),
     SettingsModel(
         settingName: "My membership",
         icon: Icon(Icons.store_mall_directory),
-        nextPage: MyMembership()),
+        nextPage: MyMembershipScreen()),
     SettingsModel(
         settingName: "My Profile",
         icon: Icon(Icons.description),
-        nextPage: MyPersonalProfile()),
+        nextPage: MyPersonalProfileScreen()),
     SettingsModel(
         settingName: "Favorites",
         icon: Icon(Icons.favorite),
-        nextPage: Favorites()),
+        nextPage: FavoritesScreen()),
     SettingsModel(
         settingName: "Stay safe",
         icon: Icon(Icons.location_on),
-        nextPage: MyAds()),
+        nextPage: MyAdsScreen()),
     SettingsModel(
         settingName: "FAQ",
         icon: Icon(Icons.question_answer),
-        nextPage: MyAds()),
+        nextPage: MyAdsScreen()),
     SettingsModel(
         settingName: "How to sell fast",
         icon: Icon(Icons.location_on),
-        nextPage: MyAds()),
+        nextPage: MyAdsScreen()),
     SettingsModel(
-        settingName: "Referrel", icon: Icon(Icons.share), nextPage: MyAds()),
+        settingName: "Referrel",
+        icon: Icon(Icons.share),
+        nextPage: MyAdsScreen()),
     SettingsModel(
-        settingName: "More", icon: Icon(Icons.more_horiz), nextPage: MyAds()),
+        settingName: "More",
+        icon: Icon(Icons.more_horiz),
+        nextPage: MyAdsScreen()),
     SettingsModel(
         settingName: "Log out",
         icon: Icon(Icons.power_settings_new),
-        nextPage: MyAds()),
+        nextPage: MyAdsScreen()),
   ];
 }

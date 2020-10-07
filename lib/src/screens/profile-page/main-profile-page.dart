@@ -3,15 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:lak_app/src/screens/profile-page/settings-model.dart';
 import 'settings-model.dart';
 
-// class MainProfilePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: ProfileScreen(),
-//     );
-//   }
-// }
-
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();

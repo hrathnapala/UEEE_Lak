@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class MyAds extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyAdsScreen(),
-    );
-  }
-}
-
 class MyAdsScreen extends StatefulWidget {
   @override
   _MyAdsScreenState createState() => _MyAdsScreenState();

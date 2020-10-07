@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class MyMembership extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyMembershipScreen(),
-    );
-  }
-}
-
 class MyMembershipScreen extends StatefulWidget {
   @override
   _MyMembershipScreenState createState() => _MyMembershipScreenState();
