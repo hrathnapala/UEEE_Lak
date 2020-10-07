@@ -22,6 +22,8 @@ class SearchCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap:true,
+      physics: NeverScrollableScrollPhysics(),
         itemCount: category.length,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
