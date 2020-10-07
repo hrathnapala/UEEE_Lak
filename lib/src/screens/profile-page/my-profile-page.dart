@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class MyPersonalProfile extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyPersonalProfileScreen(),
-    );
-  }
-}
-
 class MyPersonalProfileScreen extends StatefulWidget {
   @override
   _MyPersonalProfileScreenState createState() =>

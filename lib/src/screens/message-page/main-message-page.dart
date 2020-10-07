@@ -3,15 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'chat-model.dart';
 import 'conversation-page.dart';
 
-// class MainMessagePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: HomeScreen(),
-//     );
-//   }
-// }
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
