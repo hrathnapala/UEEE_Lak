@@ -54,6 +54,15 @@ class _HomeState extends State<Home> {
     'Rs 600,000',
     'Rs 55,000'
   ];
+  List<String> postedTime = [
+    '1 minute ago',
+    '1 day ago',
+    '9 days ago',
+    '5 minute ago',
+    '7 days ago',
+    '8 minute ago',
+    '6 days ago'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,8 +125,9 @@ class _HomeState extends State<Home> {
                       ),
                       FlatButton.icon(
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                builder: (context) => CategoryFilter()));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => CategoryFilter()));
                           },
                           icon: Icon(Icons.category),
                           label: Text("Category")),
@@ -175,7 +185,9 @@ class _HomeState extends State<Home> {
                     this.Names[index],
                     this.Location[index],
                     this.Prices[index],
-                    this.Photos[index]),
+                    this.Photos[index],
+                    this.postedTime[index]),
+
                 itemCount: this.Names.length,
               ),
             ],
@@ -189,7 +201,9 @@ class EachList extends StatelessWidget {
   final String location;
   final String price;
   final String photo;
-  EachList(this.name, this.location, this.price, this.photo);
+  final String postedTime;
+
+  EachList(this.name, this.location, this.price, this.photo, this.postedTime);
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -260,8 +274,8 @@ class EachList extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: Text(
-                          'a moment ago',
-                        ),
+                            //'a moment ago',
+                            postedTime),
                       ),
                     ],
                   )
