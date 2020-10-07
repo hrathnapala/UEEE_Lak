@@ -5,43 +5,28 @@ import 'detail-section.dart';
 import 'image-banner.dart';
 import '../home.dart';
 import '../ad-share/ad-share.dart';
+import 'similar-ads.dart';
 
 class SingleAd extends StatelessWidget {
   List<String> Names = [
     'Kelaniya Luxury Apartment for sale',
     'Honda vezel for sale',
     'High Back Chair for sale',
-    'Oppo A5 for sale',
-    'VR Box for sale',
-    'Honda CBR for sale',
-    'House for Rent'
   ];
   List<String> Location = [
     'Gampaha,Apartment',
     'Galle,Vehicle',
     'Malabe,Chair',
-    'Gampaha,Mobile Phone',
-    'Colombo, Mobile Phone Accessoryasaasasa',
-    'Kaluthara,Bike',
-    'Borella,House'
   ];
   List<String> Photos = [
     'assets/img/image1.jpg',
     'assets/img/image2.jpg',
     'assets/img/image3.jpg',
-    'assets/img/image4.jpg',
-    'assets/img/image5.jpg',
-    'assets/img/image6.jpg',
-    'assets/img/image7.jpg'
   ];
   List<String> Prices = [
     'Rs 19,000,000',
     'Rs 6,000,000',
     'Rs 15,000',
-    'Rs 55,000',
-    'Rs 2500',
-    'Rs 600,000',
-    'Rs 55,000'
   ];
 
   @override
@@ -88,6 +73,7 @@ class SingleAd extends StatelessWidget {
               PriceSection("Rs 5, 000, 000", "Sale by Amith Weerasena"),
               DetailSection("Category       Cars", "Brand             Toyota",
                   "Model             Vitz", "Condition       Brand-new"),
+              SimilarAds("Smilar Ads"),
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 // primary: false,
