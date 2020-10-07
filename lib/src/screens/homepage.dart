@@ -142,7 +142,7 @@ class _HomepageState extends State<Homepage> {
                       onPressed: () {
                         setState(() {
                           currentScreen =
-                              MainProfilePage(); // if user taps on this dashboard tab will be active
+                              ProfileScreen(); // if user taps on this dashboard tab will be active
                           currentTab = 3;
                         });
                       },

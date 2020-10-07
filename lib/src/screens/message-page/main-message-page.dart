@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ConversationApp(),
+                        builder: (context) => Chat(),
                       ),
                     );
                   },

@@ -14,17 +14,17 @@ final ThemeData androidTheme = new ThemeData(
 
 const String defaultUserName = 'John Doe';
 
-class ConversationApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext ctx) {
-    return new MaterialApp(
-      title: "User name",
-      // theme:
-      //     defaultTargetPlatform == TargetPlatform.iOS ? iOSTheme : androidTheme,
-      home: new Chat(),
-    );
-  }
-}
+// class ConversationApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext ctx) {
+//     return new MaterialApp(
+//       title: "User name",
+//       // theme:
+//       //     defaultTargetPlatform == TargetPlatform.iOS ? iOSTheme : androidTheme,
+//       home: new Chat(),
+//     );
+//   }
+// }
 
 class Chat extends StatefulWidget {
   @override
