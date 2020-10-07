@@ -20,35 +20,38 @@ class _SearchState extends State<Search> {
           child: Column(
             children: [
               SizedBox(height: 5),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.1,
-                child: TextFormField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                      // fillColor: Color(0xffd9d9d9),
-                      // filled: true,
-                      hintText: "Search for a Category",
-                      hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: BorderSide(
-                          color: Colors.grey,
-                          width: 2.0,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: TextFormField(
+                    autofocus: false,
+                    decoration: InputDecoration(
+                        // fillColor: Color(0xffd9d9d9),
+                        // filled: true,
+                        hintText: "Search for a Category",
+                        hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                        contentPadding:
+                            EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: BorderSide(
-                          color: Colors.grey,
-                          width: 2.0,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      )),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        )),
+                  ),
                 ),
               ),
               Container(
