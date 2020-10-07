@@ -6,17 +6,17 @@ import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
 import 'package:lak_app/src/screens/single-ad/single-ad.dart';
-// import '../screens/single-ad/single-ad.dart';
 
 class HomeClone extends StatefulWidget {
-  final String location;
-  HomeClone({this.location});
   @override
   _HomeCloneState createState() => _HomeCloneState();
 }
 
 class _HomeCloneState extends State<HomeClone> {
-  String location = LocationModel.getLocation().isNotEmpty?LocationModel.getLocation():"Sri Lanka";
+  String location = LocationModel.getLocation().isNotEmpty
+      ? LocationModel.getLocation()
+      : "Sri Lanka";
+
   String filterPrice = "";
 
   @override
@@ -60,134 +60,145 @@ class _HomeCloneState extends State<HomeClone> {
     'Rs 600,000',
     'Rs 55,000'
   ];
+
+  Future<bool> _onBackPressed() {
+    return Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("${widget.location}"),
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(
-              Icons.close,
-              size: 30,
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+                "${LocationModel.getLocation1().isNotEmpty ? LocationModel.getLocation1() : "Category"}"),
+            centerTitle: true,
+            leading: IconButton(
+              icon: Icon(
+                Icons.close,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => MyApp()));
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => MyApp()));
-            },
           ),
-        ),
-        body: SingleChildScrollView(
-          physics: ScrollPhysics(),
-          child: Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      FlatButton.icon(
-                          onPressed: () async {
-                            String value = await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => LocationFilter()));
-                            setState(() {
-                              location = value;
-                            });
-                          },
-                          icon: Icon(Icons.location_on),
-                          label: Text(location)),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CategoryFilter()));
-                          },
-                          icon: Icon(Icons.category),
-                          label: Text("${widget.location}")),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () async {
-                            String response = await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => CommonFilter()));
-                            setState(() {
-                              filterPrice = response;
-                            });
-                          },
-                          icon: Icon(Icons.equalizer),
-                          label: Text("")),
-                    ]),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.25),
-                  items: [
-                    "assets/img/img1.jpg",
-                    "assets/img/img2.jpg",
-                    "assets/img/img3.jpg",
-                    "assets/img/img4.jpg",
-                    "assets/img/img5.jpg"
-                  ].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Image.asset(
-                          i,
-                          height: MediaQuery.of(context).size.height * 0.35,
-                          width: MediaQuery.of(context).size.width,
-                        );
-                      },
-                    );
-                  }).toList(),
+          body: SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        FlatButton.icon(
+                            onPressed: () async {
+                              String value = await Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => LocationFilter()));
+                              setState(() {
+                                location = value;
+                              });
+                            },
+                            icon: Icon(Icons.location_on),
+                            label: Text(location)),
+                        VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                          width: 1,
+                          indent: 20,
+                          endIndent: 20,
+                        ),
+                        FlatButton.icon(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => CategoryFilter()));
+                            },
+                            icon: Icon(Icons.category),
+                            label: Text(
+                                "${LocationModel.getLocation1().isNotEmpty ? LocationModel.getLocation1() : "Category"}")),
+                        VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                          width: 1,
+                          indent: 20,
+                          endIndent: 20,
+                        ),
+                        FlatButton.icon(
+                            onPressed: () async {
+                              String response = await Navigator.of(context)
+                                  .push(MaterialPageRoute(
+                                      builder: (context) => CommonFilter()));
+                              setState(() {
+                                filterPrice = response;
+                              });
+                            },
+                            icon: Icon(Icons.equalizer),
+                            label: Text("")),
+                      ]),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                filterPrice,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.blueGrey),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                // primary: false,
-                shrinkWrap: true,
-                itemBuilder: (_, int index) => EachList(
-                    this.Names[index],
-                    this.Location[index],
-                    this.Prices[index],
-                    this.Photos[index]),
-                itemCount: this.Names.length,
-              ),
-            ],
-          ),
-        ));
+                SizedBox(
+                  height: 5,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                        height: MediaQuery.of(context).size.height * 0.25),
+                    items: [
+                      "assets/img/img1.jpg",
+                      "assets/img/img2.jpg",
+                      "assets/img/img3.jpg",
+                      "assets/img/img4.jpg",
+                      "assets/img/img5.jpg"
+                    ].map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Image.asset(
+                            i,
+                            height: MediaQuery.of(context).size.height * 0.35,
+                            width: MediaQuery.of(context).size.width,
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "$filterPrice",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.blueGrey),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  // primary: false,
+                  shrinkWrap: true,
+                  itemBuilder: (_, int index) => EachList(
+                      this.Names[index],
+                      this.Location[index],
+                      this.Prices[index],
+                      this.Photos[index]),
+                  itemCount: this.Names.length,
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }
 
