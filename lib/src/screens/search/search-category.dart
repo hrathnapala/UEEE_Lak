@@ -22,8 +22,8 @@ class SearchCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      shrinkWrap:true,
-      physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: category.length,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -42,8 +42,8 @@ class SearchCategory extends StatelessWidget {
                     ),
                     Image.asset(
                       images[index],
-                      height: 85,
-                      width: 85,
+                      height: MediaQuery.of(context).size.height * 0.09,
+                      width: MediaQuery.of(context).size.height * 0.09,
                     ),
                     Padding(
                       padding: EdgeInsets.all(25),

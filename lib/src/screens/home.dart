@@ -265,7 +265,7 @@ class EachList extends StatelessWidget {
                   SizedBox(height: 10.0),
                   Row(
                     children: <Widget>[
-                      SizedBox(width: 100.0),
+                      SizedBox(width: 70.0),
                       Container(
                         padding: EdgeInsets.all(5.0),
                         width: 110.0,

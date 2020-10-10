@@ -60,7 +60,8 @@ class HomeCarousel extends StatelessWidget {
                           height: 120.0,
                           width: 300.0,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            // TODO check color
+                            color: Colors.blue[800],
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Padding(
@@ -72,6 +73,7 @@ class HomeCarousel extends StatelessWidget {
                                 Text(
                                   item.adName,
                                   style: TextStyle(
+                                    color: Colors.white,
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.w600,
                                     letterSpacing: 1.2,
@@ -80,7 +82,7 @@ class HomeCarousel extends StatelessWidget {
                                 Text(
                                   item.description,
                                   style: TextStyle(
-                                    color: Colors.grey,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],

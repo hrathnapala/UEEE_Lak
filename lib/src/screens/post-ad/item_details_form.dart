@@ -20,10 +20,11 @@ class ItemDetailsState extends State<ItemDetails> {
 
   Widget buildGridView() {
     return GridView.count(
-      physics: NeverScrollableScrollPhysics(),
       crossAxisCount: 3,
+      shrinkWrap: true,
       children: List.generate(images.length, (index) {
         Asset asset = images[index];
+
         return AssetThumb(
           asset: asset,
           width: 300,
@@ -114,18 +115,19 @@ class ItemDetailsState extends State<ItemDetails> {
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: ListView(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: buildGridView(),
-                ),
+                // Expanded(
+                //   child: buildGridView(),
+                // ),
                 // SizedBox(height: 15.0),
                 // RaisedButton(
                 //   child: Text("Pick images"),
                 //   onPressed: loadAssets,
                 // ),
+                buildGridView(),
                 ButtonTheme(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
