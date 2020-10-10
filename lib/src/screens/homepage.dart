@@ -33,11 +33,11 @@ class _HomepageState extends State<Homepage> {
       bottomNavigationBar: BottomAppBar(
         color: Color(0xff75A6D5),
         shape: CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 8,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.08,
+            height: MediaQuery.of(context).size.height * 0.07,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -60,14 +60,14 @@ class _HomepageState extends State<Homepage> {
                               color: currentTab == 0
                                   ? Colors.black87
                                   : Colors.white70),
-                          Text(
-                            'Home',
-                            style: TextStyle(
-                              color: currentTab == 0
-                                  ? Colors.black87
-                                  : Colors.white70,
-                            ),
-                          ),
+                          // Text(
+                          //   'Home',
+                          //   style: TextStyle(
+                          //     color: currentTab == 0
+                          //         ? Colors.black87
+                          //         : Colors.white70,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -89,14 +89,14 @@ class _HomepageState extends State<Homepage> {
                                 ? Colors.black87
                                 : Colors.white70,
                           ),
-                          Text(
-                            'Search',
-                            style: TextStyle(
-                              color: currentTab == 1
-                                  ? Colors.black87
-                                  : Colors.white70,
-                            ),
-                          ),
+                          // Text(
+                          //   'Search',
+                          //   style: TextStyle(
+                          //     color: currentTab == 1
+                          //         ? Colors.black87
+                          //         : Colors.white70,
+                          //   ),
+                          // ),
                         ],
                       ),
                     )
@@ -126,14 +126,14 @@ class _HomepageState extends State<Homepage> {
                                 ? Colors.black87
                                 : Colors.white70,
                           ),
-                          Text(
-                            'Chat',
-                            style: TextStyle(
-                              color: currentTab == 2
-                                  ? Colors.black87
-                                  : Colors.white70,
-                            ),
-                          ),
+                          // Text(
+                          //   'Chat',
+                          //   style: TextStyle(
+                          //     color: currentTab == 2
+                          //         ? Colors.black87
+                          //         : Colors.white70,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -155,14 +155,14 @@ class _HomepageState extends State<Homepage> {
                                 ? Colors.black87
                                 : Colors.white70,
                           ),
-                          Text(
-                            'Profile',
-                            style: TextStyle(
-                              color: currentTab == 3
-                                  ? Colors.black87
-                                  : Colors.white70,
-                            ),
-                          ),
+                          // Text(
+                          //   'Profile',
+                          //   style: TextStyle(
+                          //     color: currentTab == 3
+                          //         ? Colors.black87
+                          //         : Colors.white70,
+                          //   ),
+                          // ),
                         ],
                       ),
                     )

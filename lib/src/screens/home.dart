@@ -67,13 +67,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 80,
+          toolbarHeight: 70,
           title: Column(
             children: [
               Text(
                 "LAK.lk",
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
               Text(
                 "22656 results",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                 ),
               ),
@@ -95,42 +95,46 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.08,
+                color: Colors.blue[900],
+                height: MediaQuery.of(context).size.height * 0.06,
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton.icon(
-                          onPressed: () async {
-                            var result = await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => LocationFilter()));
-                            setState(() {
-                              if (result != null) {
-                                LocationModel.setLocation(result);
-                                location = result;
-                              }
-                            });
-                          },
-                          icon: Icon(Icons.location_on),
-                          label: Text("$location")),
+                        onPressed: () async {
+                          var result = await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => LocationFilter()));
+                          setState(() {
+                            if (result != null) {
+                              LocationModel.setLocation(result);
+                              location = result;
+                            }
+                          });
+                        },
+                        icon: Icon(Icons.location_on, color: Colors.white),
+                        label: Text("$location"),
+                        textColor: Colors.white,
+                      ),
                       VerticalDivider(
-                        color: Colors.black,
+                        color: Colors.white,
                         thickness: 1,
                         width: 1,
                         indent: 20,
                         endIndent: 20,
                       ),
                       FlatButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => CategoryFilter()));
-                          },
-                          icon: Icon(Icons.category),
-                          label: Text("Category")),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => CategoryFilter()));
+                        },
+                        icon: Icon(Icons.category, color: Colors.white),
+                        label: Text("Category"),
+                        textColor: Colors.white,
+                      ),
                       // VerticalDivider(
                       //   color: Colors.black,
                       //   thickness: 1,
@@ -235,7 +239,7 @@ class EachList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        width: 210.0,
+                        width: 180.0,
                         child: Text(
                           name,
                           style: TextStyle(
