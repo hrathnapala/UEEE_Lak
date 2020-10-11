@@ -142,7 +142,7 @@ class _LocationFilterState extends State<LocationFilter> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pop("Location");
+                  Navigator.of(context).pop("Sri Lanka");
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
