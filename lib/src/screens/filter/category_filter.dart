@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lak_app/main.dart';
+import 'package:lak_app/src/screens/filter/category_model.dart';
 import 'package:lak_app/src/screens/filter/home_clone.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/home.dart';
@@ -12,57 +13,93 @@ class CategoryFilter extends StatefulWidget {
 }
 
 class _CategoryFilterState extends State<CategoryFilter> {
-  List<String> categories = [
-    "Essentials",
-    "Electronics",
-    "Vehicles",
-    "Property",
-    "Jobs in Sri Lanka",
-    "Work Overseas",
-    "Home & Garden",
-    "Fashion & Beauty",
-    "Hobby, Sport & Kids",
-    "Business & Industry",
-    "Services",
-    "Education",
-    "Animals",
-    "Agriculture",
-    "Other",
+
+  List<CategoryModel> cat = [
+    CategoryModel(category:"Essentials",icondata:Icons.local_grocery_store ),
+    CategoryModel(category:"Electronics",icondata:Icons.phone_android ),
+    CategoryModel(category:"Vehicles",icondata:Icons.local_taxi ),
+    CategoryModel(category:"Property",icondata:Icons.home ),
+    CategoryModel(category:"Jobs in Sri Lanka",icondata:Icons.work ),
+    CategoryModel(category:"Work Overseas",icondata:Icons.offline_bolt ),
+    CategoryModel(category:"Home & Garden",icondata:Icons.location_city ),
+    CategoryModel(category:"Fashion & Beauty",icondata:Icons.watch ),
+    CategoryModel(category:"Hobby, Sport & Kids",icondata:Icons.play_arrow ),
+    CategoryModel(category:"Business & Industry",icondata:Icons.build ),
+    CategoryModel(category:"Services",icondata:Icons.room_service ),
+    CategoryModel(category:"Education",icondata:Icons.book ),
+    CategoryModel(category:"Animals",icondata:Icons.pets ),
+    CategoryModel(category:"Agriculture",icondata:Icons.spa ),
+    CategoryModel(category:"Other",icondata:Icons.devices_other )
   ];
-  List<IconData> images = [
-    Icons.local_grocery_store,
-    Icons.phone_android,
-    Icons.local_taxi,
-    Icons.home,
-    Icons.work,
-    Icons.offline_bolt,
-    Icons.location_city,
-    Icons.watch,
-    Icons.play_arrow,
-    Icons.build,
-    Icons.room_service,
-    Icons.book,
-    Icons.pets,
-    Icons.spa,
-    Icons.devices_other,
+    List<CategoryModel> catFilter = [
+    CategoryModel(category:"Essentials",icondata:Icons.local_grocery_store ),
+    CategoryModel(category:"Electronics",icondata:Icons.phone_android ),
+    CategoryModel(category:"Vehicles",icondata:Icons.local_taxi ),
+    CategoryModel(category:"Property",icondata:Icons.home ),
+    CategoryModel(category:"Jobs in Sri Lanka",icondata:Icons.work ),
+    CategoryModel(category:"Work Overseas",icondata:Icons.offline_bolt ),
+    CategoryModel(category:"Home & Garden",icondata:Icons.location_city ),
+    CategoryModel(category:"Fashion & Beauty",icondata:Icons.watch ),
+    CategoryModel(category:"Hobby, Sport & Kids",icondata:Icons.play_arrow ),
+    CategoryModel(category:"Business & Industry",icondata:Icons.build ),
+    CategoryModel(category:"Services",icondata:Icons.room_service ),
+    CategoryModel(category:"Education",icondata:Icons.book ),
+    CategoryModel(category:"Animals",icondata:Icons.pets ),
+    CategoryModel(category:"Agriculture",icondata:Icons.spa ),
+    CategoryModel(category:"Other",icondata:Icons.devices_other )
   ];
-  List<String> filteredcategory = [
-    "Essentials",
-    "Electronics",
-    "Vehicles",
-    "Property",
-    "Jobs in Sri Lanka",
-    "Work Overseas",
-    "Home & Garden",
-    "Fashion & Beauty",
-    "Hobby, Sport & Kids",
-    "Business & Industry",
-    "Services",
-    "Education",
-    "Animals",
-    "Agriculture",
-    "Other",
-  ];
+
+  // List<String> categories = [
+  //   "Essentials",
+  //   "Electronics",
+  //   "Vehicles",
+  //   "Property",
+  //   "Jobs in Sri Lanka",
+  //   "Work Overseas",
+  //   "Home & Garden",
+  //   "Fashion & Beauty",
+  //   "Hobby, Sport & Kids",
+  //   "Business & Industry",
+  //   "Services",
+  //   "Education",
+  //   "Animals",
+  //   "Agriculture",
+  //   "Other",
+  // ];
+  // List<IconData> images = [
+  //   Icons.local_grocery_store,
+  //   Icons.phone_android,
+  //   Icons.local_taxi,
+  //   Icons.home,
+  //   Icons.work,
+  //   Icons.offline_bolt,
+  //   Icons.location_city,
+  //   Icons.watch,
+  //   Icons.play_arrow,
+  //   Icons.build,
+  //   Icons.room_service,
+  //   Icons.book,
+  //   Icons.pets,
+  //   Icons.spa,
+  //   Icons.devices_other,
+  // ];
+  // List<String> filteredcategory = [
+  //   "Essentials",
+  //   "Electronics",
+  //   "Vehicles",
+  //   "Property",
+  //   "Jobs in Sri Lanka",
+  //   "Work Overseas",
+  //   "Home & Garden",
+  //   "Fashion & Beauty",
+  //   "Hobby, Sport & Kids",
+  //   "Business & Industry",
+  //   "Services",
+  //   "Education",
+  //   "Animals",
+  //   "Agriculture",
+  //   "Other",
+  // ];
 
   Future<bool> _onBackPressed() {
     return Navigator.of(context)
@@ -105,8 +142,8 @@ class _CategoryFilterState extends State<CategoryFilter> {
                   onChanged: (text) {
                     text = text.toLowerCase();
                     setState(() {
-                      filteredcategory = categories.where((location) {
-                        var locationTitle = location.toLowerCase();
+                      catFilter = cat.where((location) {
+                        var locationTitle = location.category.toLowerCase();
                         return locationTitle.contains(text);
                       }).toList();
                     });
@@ -164,7 +201,7 @@ class _CategoryFilterState extends State<CategoryFilter> {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: filteredcategory.length,
+                itemCount: catFilter.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(5.0),
@@ -174,20 +211,20 @@ class _CategoryFilterState extends State<CategoryFilter> {
                           title: Row(
                             children: [
                               Icon(
-                                images[index],
+                                catFilter[index].icondata,
                                 color: Colors.blueAccent,
                               ),
                               SizedBox(
                                 width: size.width * 0.05,
                               ),
                               Text(
-                                '${filteredcategory[index]}',
+                                '${catFilter[index].category}',
                                 style: TextStyle(fontSize: 16),
                               ),
                             ],
                           ),
                           onTap: () {
-                            LocationModel.setLocation1(filteredcategory[index]);
+                            LocationModel.setLocation1(catFilter[index].category);
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => HomeClone()));
