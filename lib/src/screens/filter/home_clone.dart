@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lak_app/main.dart';
 import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
@@ -70,7 +69,6 @@ class _HomeCloneState extends State<HomeClone> {
     '8 minute ago',
     '6 days ago'
   ];
-
 
   Future<bool> _onBackPressed() {
     return Navigator.of(context)
@@ -158,54 +156,27 @@ class _HomeCloneState extends State<HomeClone> {
                 SizedBox(
                   height: 5,
                 ),
-                 // ClipRRect(
-              //   borderRadius: BorderRadius.circular(30),
-              //   child: CarouselSlider(
-              //     options: CarouselOptions(
-              //         height: MediaQuery.of(context).size.height * 0.25),
-              //     items: [
-              //       "assets/img/img1.jpg",
-              //       "assets/img/img2.jpg",
-              //       "assets/img/img3.jpg",
-              //       "assets/img/img4.jpg",
-              //       "assets/img/img5.jpg"
-              //     ].map((i) {
-              //       return Builder(
-              //         builder: (BuildContext context) {
-              //           return Image.asset(
-              //             i,
-              //             height: MediaQuery.of(context).size.height * 0.35,
-              //             width: MediaQuery.of(context).size.width,
-              //           );
-              //         },
-              //       );
-              //     }).toList(),
-              //   ),
-              // ),
-              HomeCarousel(),
-               Text(
+                HomeCarousel(),
+                Text(
                   "$filterPrice",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                       color: Colors.blueGrey),
                 ),
-              // SizedBox(
-              //   height: 10,
-              // ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                // primary: false,
-                shrinkWrap: true,
-                itemBuilder: (_, int index) => EachList(
-                    this.Names[index],
-                    this.Location[index],
-                    this.Prices[index],
-                    this.Photos[index],
-                    this.postedTime[index]),
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  // primary: false,
+                  shrinkWrap: true,
+                  itemBuilder: (_, int index) => EachList(
+                      this.Names[index],
+                      this.Location[index],
+                      this.Prices[index],
+                      this.Photos[index],
+                      this.postedTime[index]),
 
-                itemCount: this.Names.length,
-              ),
+                  itemCount: this.Names.length,
+                ),
               ],
             ),
           )),
@@ -290,9 +261,7 @@ class EachList extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         alignment: Alignment.center,
-                        child: Text(
-                            //'a moment ago',
-                            postedTime),
+                        child: Text(postedTime),
                       ),
                     ],
                   )
