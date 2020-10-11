@@ -5,6 +5,7 @@ import 'package:lak_app/src/screens/filter/category_filter.dart';
 import 'package:lak_app/src/screens/filter/common_filter.dart';
 import 'package:lak_app/src/screens/filter/locationModelClass.dart';
 import 'package:lak_app/src/screens/filter/location_filter.dart';
+import 'package:lak_app/src/screens/message-page/home_carousel.dart';
 import 'package:lak_app/src/screens/single-ad/single-ad.dart';
 
 class HomeClone extends StatefulWidget {
@@ -60,6 +61,16 @@ class _HomeCloneState extends State<HomeClone> {
     'Rs 600,000',
     'Rs 55,000'
   ];
+  List<String> postedTime = [
+    '1 minute ago',
+    '1 day ago',
+    '9 days ago',
+    '5 minute ago',
+    '7 days ago',
+    '8 minute ago',
+    '6 days ago'
+  ];
+
 
   Future<bool> _onBackPressed() {
     return Navigator.of(context)
@@ -147,54 +158,54 @@ class _HomeCloneState extends State<HomeClone> {
                 SizedBox(
                   height: 5,
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        height: MediaQuery.of(context).size.height * 0.25),
-                    items: [
-                      "assets/img/img1.jpg",
-                      "assets/img/img2.jpg",
-                      "assets/img/img3.jpg",
-                      "assets/img/img4.jpg",
-                      "assets/img/img5.jpg"
-                    ].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Image.asset(
-                            i,
-                            height: MediaQuery.of(context).size.height * 0.35,
-                            width: MediaQuery.of(context).size.width,
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
+                 // ClipRRect(
+              //   borderRadius: BorderRadius.circular(30),
+              //   child: CarouselSlider(
+              //     options: CarouselOptions(
+              //         height: MediaQuery.of(context).size.height * 0.25),
+              //     items: [
+              //       "assets/img/img1.jpg",
+              //       "assets/img/img2.jpg",
+              //       "assets/img/img3.jpg",
+              //       "assets/img/img4.jpg",
+              //       "assets/img/img5.jpg"
+              //     ].map((i) {
+              //       return Builder(
+              //         builder: (BuildContext context) {
+              //           return Image.asset(
+              //             i,
+              //             height: MediaQuery.of(context).size.height * 0.35,
+              //             width: MediaQuery.of(context).size.width,
+              //           );
+              //         },
+              //       );
+              //     }).toList(),
+              //   ),
+              // ),
+              HomeCarousel(),
+               Text(
                   "$filterPrice",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                       color: Colors.blueGrey),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  // primary: false,
-                  shrinkWrap: true,
-                  itemBuilder: (_, int index) => EachList(
-                      this.Names[index],
-                      this.Location[index],
-                      this.Prices[index],
-                      this.Photos[index]),
-                  itemCount: this.Names.length,
-                ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                // primary: false,
+                shrinkWrap: true,
+                itemBuilder: (_, int index) => EachList(
+                    this.Names[index],
+                    this.Location[index],
+                    this.Prices[index],
+                    this.Photos[index],
+                    this.postedTime[index]),
+
+                itemCount: this.Names.length,
+              ),
               ],
             ),
           )),
@@ -207,7 +218,9 @@ class EachList extends StatelessWidget {
   final String location;
   final String price;
   final String photo;
-  EachList(this.name, this.location, this.price, this.photo);
+  final String postedTime;
+
+  EachList(this.name, this.location, this.price, this.photo, this.postedTime);
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -278,8 +291,8 @@ class EachList extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: Text(
-                          'a moment ago',
-                        ),
+                            //'a moment ago',
+                            postedTime),
                       ),
                     ],
                   )
