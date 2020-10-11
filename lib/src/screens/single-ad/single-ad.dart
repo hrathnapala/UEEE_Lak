@@ -32,63 +32,71 @@ class SingleAd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Details'),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => MyApp()),
-              );
-            },
-            child: Icon(
-              Icons.arrow_back,
-            ),
-          ),
-          actions: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AdShare()),
-                    );
-                  },
-                  child: Icon(
-                    Icons.share,
-                    size: 26.0,
-                  ),
-                )),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ImageBanner("assets/img/vitz.jpg"),
-              Section(
-                  "Toyota Vitz", "Posted on 6 Aug 2020", "Kaduwela, Colombo"),
-              PriceSection("Rs 5, 000, 000", "Sale by Amith Weerasena"),
-              DetailSection("Category       Cars", "Brand             Toyota",
-                  "Model             Vitz", "Condition       Brand-new"),
-              SimilarAds("Smilar Ads"),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                // primary: false,
-                shrinkWrap: true,
-                itemBuilder: (_, int index) => EachList(
-                    this.Names[index],
-                    this.Location[index],
-                    this.Prices[index],
-                    this.Photos[index]),
-                itemCount: this.Names.length,
+    Future<bool> _onBackPressed() {
+      return Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
+    }
+
+    return WillPopScope(
+      onWillPop: () => _onBackPressed(),
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text('Details'),
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: Icon(
+                Icons.arrow_back,
               ),
+            ),
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AdShare()),
+                      );
+                    },
+                    child: Icon(
+                      Icons.share,
+                      size: 26.0,
+                    ),
+                  )),
             ],
           ),
-        ));
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ImageBanner("assets/img/vitz.jpg"),
+                Section(
+                    "Toyota Vitz", "Posted on 6 Aug 2020", "Kaduwela, Colombo"),
+                PriceSection("Rs 5, 000, 000", "Sale by Amith Weerasena"),
+                DetailSection("Category       Cars", "Brand             Toyota",
+                    "Model             Vitz", "Condition       Brand-new"),
+                SimilarAds("Smilar Ads"),
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  // primary: false,
+                  shrinkWrap: true,
+                  itemBuilder: (_, int index) => EachList(
+                      this.Names[index],
+                      this.Location[index],
+                      this.Prices[index],
+                      this.Photos[index]),
+                  itemCount: this.Names.length,
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }
 
