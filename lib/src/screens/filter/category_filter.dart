@@ -176,7 +176,9 @@ class _CategoryFilterState extends State<CategoryFilter> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pop("Location");
+                  Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => MyApp()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
