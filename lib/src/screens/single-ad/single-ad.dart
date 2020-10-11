@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lak_app/main.dart';
 import 'section.dart';
 import 'price-section.dart';
 import 'detail-section.dart';
@@ -36,9 +37,9 @@ class SingleAd extends StatelessWidget {
           title: Text('Details'),
           leading: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => Home()),
+                MaterialPageRoute(builder: (context) => MyApp()),
               );
             },
             child: Icon(
@@ -111,7 +112,7 @@ class EachList extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => SingleAd()),
               );

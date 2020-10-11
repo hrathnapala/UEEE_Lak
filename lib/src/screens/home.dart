@@ -11,7 +11,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String location = "Location";
+  String location = LocationModel.getLocation().isNotEmpty
+      ? LocationModel.getLocation()
+      : "Sri Lanka";
   @override
   void initState() {
     super.initState();
@@ -219,7 +221,7 @@ class EachList extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => SingleAd()),
               );
